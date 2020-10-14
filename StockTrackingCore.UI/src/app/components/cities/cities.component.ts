@@ -1,13 +1,15 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {AfterViewInit, Component,OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component,Inject,OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
+import { title } from 'process';
 import { MyDialogComponent } from 'src/app/extensions/dialog/Mydialog.component';
 import { City } from 'src/app/models/city';
+import { DataDialog } from 'src/app/models/DataDialog';
 import { CityService } from 'src/app/services/city.service';
  
  
@@ -26,8 +28,10 @@ export interface DialogData {
 export class CitiesComponent  implements OnInit{
  
  
+
   dataSource = new MatTableDataSource<City>();
   constructor(private titleService: Title,private cityService: CityService,public dialog: MatDialog,private _snackBar: MatSnackBar) {    
+
   }
   ngOnInit(): void {
     this.titleService.setTitle("Şehirler");
@@ -56,7 +60,7 @@ export class CitiesComponent  implements OnInit{
    
     masterToggle() {
       this.isAllSelected() ?
-      this.selection.clear() : this.dataSource.data.length
+      this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
     }
     
@@ -72,29 +76,46 @@ export class CitiesComponent  implements OnInit{
     }
 
     
-    openDialog(): void {
+    deleteCities(): void {
+      const selectedIds:Number[] = [];
       const dialogRef = this.dialog.open(MyDialogComponent, {
-        data: {Title: "Ürün Sil"}
-      });
-       
+        data: new DataDialog ( "Ürün Sil" , "Seçili Ürünleri Silmek İstediğinizden Emin Misiniz ? ", "Hayır","Sil")
+      });     
       dialogRef.afterClosed().subscribe(result => {
-        this._snackBar.open("Silme Kapatıldı.", "Tamam", {duration: 2000,});
-        this.selection.selected.forEach(function (value) {
-          console.log(value.id);
-        }); 
+        
+        if(result =="Yes" ){
+          this.selection.selected.forEach(function (value) {
+            selectedIds.push(value.id);
+          }); 
+          //Silme Gönderme Servis ile Eğğer Ok gelirse
+          this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else {
+          this._snackBar.open("Silme İşleminden Vazgeçildi.", "Tamam", {duration: 2000,});
+        }         
+      }); 
+    }
 
-        console.log(result);
-      });
-      
+    deleteCity(id:number,cityName:string): void {
+      const selectedIds:Number[] = [];
+      const dialogRef = this.dialog.open(MyDialogComponent, {
+        data: new DataDialog ( "Şehir Sil" ,"<strong> " + cityName + "</strong> Şehrini  Silmek İstediğinizden Emin Misiniz ? ", "Hayır","Sil")
+      });     
+      dialogRef.afterClosed().subscribe(result => {
+        
+        if(result =="Yes" ){
+          this.selection.selected.forEach(function (value) {
+            selectedIds.push(value.id);
+          }); 
+          //Silme Gönderme Servis ile Eğğer Ok gelirse
+          this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else {
+          this._snackBar.open("Silme İşleminden Vazgeçildi.", "Tamam", {duration: 2000,});
+        }         
+      }); 
     }
 
 }
-
  
-export interface DataDialog {
-  Title: string;
-}
-   
  
 
 

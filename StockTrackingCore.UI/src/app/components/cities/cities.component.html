@@ -28,22 +28,21 @@
         <input
           matInput
           (keyup)="applyFilter($event)"
-          placeholder="Ex. Mia"
+          placeholder="izmir"
           #input
         />
       </mat-form-field>
 
-      <div class="row align-items-center collapse action-group" [ngClass]="{'show' : selection.selected.length > 0}"><!-- We show 'Group Actions' div if smth are selected -->
+      <div class="row align-items-center collapse action-group" [ngClass]="{'show' : selection.selected.length > 0}"  >
       <div class="col-xl-12">
         <div class="kt-form__group" style="display:inline">
-          <div class="kt-form__label kt-form__label-no-wrap" style="display:inline;margin-right: 20px;">
-            <label class="kt--font-bold kt-font-danger-">
-              <span> Seçilen Satır Sayısı :  </span> {{ selection.selected.length }}
-            </label>            
-          </div>
+          
           <div class="kt-form__control kt-form__group--inline" style="display:inline">
-            <div style="display:inline">
-              <button (click)="openDialog()"
+            <label class="kt--font-bold kt-font-danger-" id="selectedrowCount">
+              <span> Seçilen Satır :  </span> {{ selection.selected.length }}
+            </label> 
+        
+              <button (click)="deleteCities()"
                 mat-raised-button
                 color="accent"
                 matTooltip="Delete selected customers" 
@@ -51,7 +50,7 @@
                 <mat-icon>delete</mat-icon>
                 Hepsini Sil
               </button>&nbsp;<!-- Call 'delete-entity-dialog' from _shared folder -->
-            </div>
+           
 
             
             <button  mat-raised-button matTooltip="Update status for selected customers"  class="mat-button-mt-4">
@@ -114,6 +113,7 @@
               </div>
               <div>
                 <button
+                (click)="deleteCity(cities.id,cities.cityName)"
                   mat-icon-button
                   color="warn"
                   aria-label="Example icon button with a heart icon"

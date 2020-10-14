@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
+import { DataDialog } from 'src/app/models/DataDialog';
 import { MyDialogComponent } from '../../extensions/dialog/Mydialog.component';
 
 
@@ -64,7 +65,7 @@ export class ProductComponent implements AfterViewInit {
     
     openDialog(): void {
       const dialogRef = this.dialog.open(MyDialogComponent, {
-        data: {Title: "Ürün Sil"}
+        data: new DataDialog ( "Ürün Sil" , "Seçili Ürünleri Silmek İstediğinizden Emin Misiniz ? ", "Hayır","Sil")
       });
        
       dialogRef.afterClosed().subscribe(result => {
@@ -88,9 +89,7 @@ export interface Element {
 
 }
 
-export interface DataDialog {
-  Title: string;
-}
+ 
 
 const ELEMENT_DATA: Element[] = [
   {position: 1, name: 'İzmir', weight: 1.0079, symbol: 'H'},

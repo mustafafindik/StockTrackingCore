@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef,MAT_DIALOG_DATA  } from '@angular/material/dialog';
+import { DataDialog } from 'src/app/models/DataDialog';
 
-export interface DataDialog {
-  Title: string;
-}
-
+ 
 @Component({
   selector: 'app-mydialog',
   templateUrl: './mydialog.component.html',
@@ -16,7 +14,7 @@ export class MyDialogComponent{
   constructor(
     public dialogRef: MatDialogRef<MyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DataDialog) {
-      console.log(data);
+     
     }
 
   onNoClick(): void {
@@ -24,7 +22,7 @@ export class MyDialogComponent{
   }
 
   onYesClick(): void {
-    this.dialogRef.close("yes");
+    this.dialogRef.close("Yes");
   }
   
 }
