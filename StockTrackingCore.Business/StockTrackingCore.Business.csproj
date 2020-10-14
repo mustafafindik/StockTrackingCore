@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StockTrackingCore.DataAccess\StockTrackingCore.DataAccess.csproj" />
+    <ProjectReference Include="..\StockTrackingCore.Entities\StockTrackingCore.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

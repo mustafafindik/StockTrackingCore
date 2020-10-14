@@ -1,0 +1,8 @@
+<h1 mat-dialog-title> {{data.Title}} </h1>
+<div mat-dialog-content>
+  <p>Silmek İstediğinizden Emin Misiniz ?</p>  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Vazgeç</button>
+  <button color="accent" mat-raised-button  (click)="onYesClick()" cdkFocusInitial> Sil</button>
+</div>
