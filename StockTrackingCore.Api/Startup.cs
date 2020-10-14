@@ -29,8 +29,18 @@ namespace StockTrackingCore.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+       
+            string Origins = Configuration["Appsettings:Origins"];
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins(Origins).AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowAnyHeader());
+            });
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("Appsettings:Token").Value);
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
@@ -71,7 +81,7 @@ namespace StockTrackingCore.Api
             services.AddTransient<ApplicationDbContext>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockTrackingCore.Api")));
 
-            services.AddAutoMapper(typeof(Startup));
+            
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -83,6 +93,7 @@ namespace StockTrackingCore.Api
                     ValidateAudience = false
                 };
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,7 +107,7 @@ namespace StockTrackingCore.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -104,7 +115,10 @@ namespace StockTrackingCore.Api
                 endpoints.MapControllers();
             });
 
-          
+ 
+            app.UseAuthentication();
+            
+
 
             ApplicationDbContextSeed.Seed(app); //Test Data.
         }
