@@ -28,7 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar/';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
- 
+import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-dialog.component';
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
     SidebarComponent,
     HeaderComponent,
     ProductComponent,
-    MyDialogComponent
+    MyDialogComponent,
+    CitiesDialogComponent
    ],
   imports: [
     BrowserModule,
@@ -62,7 +64,9 @@ import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
     MatTooltipModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
+ 
     
   ],
   providers: [
@@ -70,7 +74,7 @@ import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
     Title
   ],
   bootstrap: [AppComponent],
-  entryComponents : [MyDialogComponent]
+  entryComponents : [MyDialogComponent,CitiesDialogComponent]
 })
 export class AppModule { 
 

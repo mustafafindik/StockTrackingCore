@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
-import { title } from 'process';
 import { MyDialogComponent } from 'src/app/extensions/dialog/Mydialog.component';
 import { City } from 'src/app/models/city';
 import { DataDialog } from 'src/app/models/DataDialog';
 import { CityService } from 'src/app/services/city.service';
+import { CitiesDialogComponent } from './cities-dialog/cities-dialog.component';
  
  
 
@@ -75,6 +75,36 @@ export class CitiesComponent  implements OnInit{
       }
     }
 
+
+    openDialog(action,obj) {
+      obj.action = action;
+      const dialogRef = this.dialog.open(CitiesDialogComponent, {
+        
+        data:obj
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if(result.event == 'Ekle'){
+          console.log(result.data);
+             //Ekleme Gönderme Servis ile Eğğer Ok gelirse
+             this._snackBar.open("Ekleme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else if(result.event == 'Güncelle'){
+          console.log(result.data);
+             //Güncelleme Gönderme Servis ile Eğğer Ok gelirse
+             this._snackBar.open("Güncelleme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else if(result.event == 'Sil'){
+          console.log(result.data);
+           //Silme Gönderme Servis ile Eğğer Ok gelirse
+           this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else  if(result.event == 'Vazgeç'){
+          this._snackBar.open("Vazgeçildi", "Tamam", {duration: 2000,});
+        }
+      });
+    }
+   
+
+ 
+
     
     deleteCities(): void {
       const selectedIds:Number[] = [];
@@ -95,24 +125,7 @@ export class CitiesComponent  implements OnInit{
       }); 
     }
 
-    deleteCity(id:number,cityName:string): void {
-      const selectedIds:Number[] = [];
-      const dialogRef = this.dialog.open(MyDialogComponent, {
-        data: new DataDialog ( "Şehir Sil" ,"<strong> " + cityName + "</strong> Şehrini  Silmek İstediğinizden Emin Misiniz ? ", "Hayır","Sil")
-      });     
-      dialogRef.afterClosed().subscribe(result => {
-        
-        if(result =="Yes" ){
-          this.selection.selected.forEach(function (value) {
-            selectedIds.push(value.id);
-          }); 
-          //Silme Gönderme Servis ile Eğğer Ok gelirse
-          this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
-        }else {
-          this._snackBar.open("Silme İşleminden Vazgeçildi.", "Tamam", {duration: 2000,});
-        }         
-      }); 
-    }
+  
 
 }
  

@@ -1,0 +1,42 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        Şehir <strong>{{action}}</strong>
+      </h3>
+    </div>
+  </div>
+  <!--begin::Form-->
+  <div class="kt-form">
+    <div class="kt-portlet__body">
+      <div mat-dialog-content>
+        <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
+        <mat-form-field style="display: block;">
+          <input placeholder="Şehir Adı" type="text" matInput [(ngModel)]="local_data.cityName" required>
+        </mat-form-field>
+     
+      </ng-template>
+        <ng-template  [ngIf]="action === 'Sil'"> 
+          <b>{{local_data.cityName}}</b> Şehrini Silmek İstediğinizden Emin Misiniz ??
+        </ng-template>
+        <ng-template [ngIf]="action === 'Detaylar'">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Id" disabled value="{{local_data.id}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Şehir Adı" disabled value="{{local_data.cityName}}">
+          </mat-form-field>
+          
+        </ng-template>
+      </div>
+    </div>
+    <div class="kt-portlet__foot">
+      <div class="kt-form__actions">
+        <button style="margin-right: 10px;" color="accent" mat-raised-button *ngIf="action !== 'Detaylar'" mat-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!--end::Form-->
+</div>
