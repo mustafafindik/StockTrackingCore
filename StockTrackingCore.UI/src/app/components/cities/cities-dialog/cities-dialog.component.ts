@@ -21,6 +21,7 @@ export class CitiesDialogComponent  {
     this.local_data = {...data};
     this.action = this.local_data.action;
     this.createCityForm();
+    this.dialogRef.disableClose = true;
   }
 
   action:string;

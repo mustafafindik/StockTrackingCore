@@ -38,7 +38,7 @@ export class CitiesComponent  implements OnInit{
     this.cityService.getCities().subscribe(data => {  
       this.dataSource = new MatTableDataSource<City>(data);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.dataSource.sort = this.sort;   
       this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
     });
   }
@@ -78,7 +78,7 @@ export class CitiesComponent  implements OnInit{
 
     openDialog(action,obj) {
       obj.action = action;
-      const dialogRef = this.dialog.open(CitiesDialogComponent, {
+      const dialogRef = this.dialog.open(CitiesDialogComponent,  {
         
         data:obj
       });
