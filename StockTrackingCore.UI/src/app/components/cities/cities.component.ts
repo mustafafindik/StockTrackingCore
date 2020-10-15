@@ -109,7 +109,7 @@ export class CitiesComponent  implements OnInit{
     deleteCities(): void {
       const selectedIds:Number[] = [];
       const dialogRef = this.dialog.open(MyDialogComponent, {
-        data: new DataDialog ( "Ürün Sil" , "Seçili Ürünleri Silmek İstediğinizden Emin Misiniz ? ", "Hayır","Sil")
+        data: new DataDialog ( "Seçili Ürünleri Sil" , "Seçili Ürünleri Silmek İstediğinizden Emin Misiniz ? ", "Kapat","Sil")
       });     
       dialogRef.afterClosed().subscribe(result => {
         
