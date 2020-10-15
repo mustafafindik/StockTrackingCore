@@ -29,8 +29,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar/';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
 import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-dialog.component';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
+ 
 
 @NgModule({
   declarations: [						
@@ -65,8 +65,8 @@ import { FormsModule } from '@angular/forms'
     MatDialogModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    FormsModule
- 
+    FormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     
   ],
   providers: [

@@ -9,10 +9,12 @@
   <!--begin::Form-->
   <div class="kt-form">
     <div class="kt-portlet__body">
-      <div mat-dialog-content>
+      <form  [formGroup]="cityAddForm">
+      <div mat-dialog-content >
         <ng-template class="example-container" [ngIf]="action === 'Güncelle' || action ==='Ekle'">
         <mat-form-field style="display: block;">
-          <input placeholder="Şehir Adı" type="text" matInput [(ngModel)]="local_data.cityName" required>
+          <input placeholder="Şehir Adı" type="text" matInput id="cityName" class="form-control"  formControlName="cityName" [(ngModel)]="local_data.cityName"   required>
+          <mat-error *ngIf="cityAddForm.get('cityName').hasError('required')">Şehir Alanı Zorunludur</mat-error>
         </mat-form-field>
      
       </ng-template>
@@ -29,6 +31,8 @@
           
         </ng-template>
       </div>
+
+    </form>
     </div>
     <div class="kt-portlet__foot">
       <div class="kt-form__actions">
