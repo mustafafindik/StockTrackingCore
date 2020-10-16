@@ -15,8 +15,23 @@ getCities(): Observable<City[]> {
   return this.httpClient.get<City[]>(this.path + "cities/getcities");
 }
 
+add(city): Observable<any> {
+  return  this.httpClient.post(this.path + 'cities/add',city,{ observe: 'response' });
+ }
 
+ update(city): Observable<any> {
+  return  this.httpClient.put(this.path + 'cities/update',city,{ observe: 'response' });
+ }
 
+ delete(city): Observable<any> {
+  return  this.httpClient.delete(this.path + 'cities/delete/'+city["id"],{ observe: 'response' });
+ }
 }
+
+
+
+
+
+
 
 

@@ -26,11 +26,19 @@ namespace StockTrackingCore.Api.Controllers
             {
                 var cities = _cityService.GetAll();
                 var citiesMap = _mapper.Map<List<CityListDto>>(cities);
-                return StatusCode(200, citiesMap);
+                return Ok(citiesMap);
             }
             catch (Exception ex)
             {
-                return StatusCode(404, ex.Message); //Bad Request
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+               
             }
 
         }
@@ -43,12 +51,89 @@ namespace StockTrackingCore.Api.Controllers
             return StatusCode(200, city);
         }
 
+
         [HttpPost]
         [Route("add")]
         public ActionResult Add([FromBody] City city)
         {
-            _cityService.Add(city);
-            return Ok(city);
+            try
+            {
+               
+                _cityService.Add(city);
+                return Ok(city);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+            }
+            
+
+        }
+
+
+        [HttpPut]
+        [Route("update")]
+        public ActionResult Update([FromBody] City city)
+        {
+            try
+            {
+
+                _cityService.Update(city);
+                return Ok(city);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+            }
+
+
+        }
+
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var city = _cityService.Get(id);
+                if (city != null)
+                {
+                    _cityService.Delete(id);
+                    return Ok(city);
+                }
+                else
+                {
+                    return NotFound("Şehir Bulunamadı"); //Bad Request
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+            }
+
 
         }
     }

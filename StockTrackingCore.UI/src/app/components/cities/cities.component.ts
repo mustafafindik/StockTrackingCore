@@ -42,6 +42,15 @@ export class CitiesComponent  implements OnInit{
       this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
     });
   }
+
+  LoadData() {
+    this.cityService.getCities().subscribe(data => {  
+      this.dataSource = new MatTableDataSource<City>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;   
+      this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
+    });
+  }
   
     displayedColumns = ['select', 'id', 'cityName',"actions"];
     selection = new SelectionModel<City>(true, []);
@@ -78,24 +87,50 @@ export class CitiesComponent  implements OnInit{
 
     openDialog(action,obj) {
       obj.action = action;
-      const dialogRef = this.dialog.open(CitiesDialogComponent,  {
-        
+      const dialogRef = this.dialog.open(CitiesDialogComponent,  {      
         data:obj
       });
   
       dialogRef.afterClosed().subscribe(result => {
         if(result.event == 'Ekle'){
           console.log(result.data);
-             //Ekleme Gönderme Servis ile Eğğer Ok gelirse
-             this._snackBar.open("Ekleme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+          this.cityService.add(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Eklendi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
+         
+         
         }else if(result.event == 'Güncelle'){
           console.log(result.data);
-             //Güncelleme Gönderme Servis ile Eğğer Ok gelirse
-             this._snackBar.open("Güncelleme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+          this.cityService.update(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Düzenlendi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
+
         }else if(result.event == 'Sil'){
           console.log(result.data);
-           //Silme Gönderme Servis ile Eğğer Ok gelirse
-           this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+          this.cityService.delete(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
         }else  if(result.event == 'Vazgeç'){
           this._snackBar.open("Vazgeçildi", "Tamam", {duration: 2000,});
         }
