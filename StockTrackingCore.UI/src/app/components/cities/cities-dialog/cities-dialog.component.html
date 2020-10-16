@@ -28,7 +28,18 @@
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Şehir Adı" disabled value="{{local_data.cityName}}">
           </mat-form-field>
-          
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date:'medium'}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate}}">
+          </mat-form-field>
         </ng-template>
       </div>
 
