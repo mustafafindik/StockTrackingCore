@@ -4,6 +4,7 @@ using StockTrackingCore.DataAccess.Concrete.EntityFramework.Contexts;
 using StockTrackingCore.Entities.Abstract;
 using StockTrackingCore.Entities.Concrete;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -28,6 +29,12 @@ namespace StockTrackingCore.DataAccess.Concrete.EntityFramework
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void DeleteSelected(List<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
             _context.SaveChanges();
         }
 

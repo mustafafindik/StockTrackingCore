@@ -1,6 +1,7 @@
 ﻿using StockTrackingCore.Entities.Abstract;
 using StockTrackingCore.Entities.Concrete;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -15,6 +16,7 @@ namespace StockTrackingCore.DataAccess.Abstract
         IQueryable<T> Find(Expression<Func<T, bool>> predicate);
         void Add(T entity);
         void Delete(T entity);
+        void DeleteSelected(List<T> entities);
         void Update(T entity);
     }
 }

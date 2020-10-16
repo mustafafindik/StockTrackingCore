@@ -136,5 +136,33 @@ namespace StockTrackingCore.Api.Controllers
 
 
         }
+
+
+        [HttpPost]
+        [Route("deleteselected")]
+        public ActionResult DeleteSelected([FromBody]  List<int> ids)
+        {
+            try
+            {
+               
+                    _cityService.DeleteSelected(ids);
+                    return Ok();
+               
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+            }
+
+
+        }
     }
 }

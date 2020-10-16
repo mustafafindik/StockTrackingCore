@@ -49,6 +49,7 @@ export class CitiesComponent  implements OnInit{
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;   
       this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
+      this.selection.clear();
     });
   }
   
@@ -152,6 +153,15 @@ export class CitiesComponent  implements OnInit{
           this.selection.selected.forEach(function (value) {
             selectedIds.push(value.id);
           }); 
+          this.cityService.deleteselected(selectedIds).subscribe(data => {           
+            console.log(data.status); 
+            this._snackBar.open("Seçilen Şehirler Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+            this.LoadData();           
+       }, error => {
+           console.log(error.status);
+           console.log(error.error);  
+           this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+       });
           //Silme Gönderme Servis ile Eğğer Ok gelirse
           this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
         }else {

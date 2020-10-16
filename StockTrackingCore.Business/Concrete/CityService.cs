@@ -28,6 +28,15 @@ namespace StockTrackingCore.Business.Concrete
             }
         }
 
+        public void DeleteSelected(List<int> ids)
+        {
+            var entity = _cityRepository.GetAll().Where(x => ids.Contains(x.Id)).ToList();
+            if (entity.Count>0)
+            {
+                _cityRepository.DeleteSelected(entity);
+            }
+        }
+
         public City Get(int id)
         {
             return _cityRepository.Get(id);

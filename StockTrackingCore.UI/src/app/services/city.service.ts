@@ -26,6 +26,10 @@ add(city): Observable<any> {
  delete(city): Observable<any> {
   return  this.httpClient.delete(this.path + 'cities/delete/'+city["id"],{ observe: 'response' });
  }
+
+ deleteselected(ids): Observable<any> {
+  return  this.httpClient.post(this.path + 'cities/deleteselected' ,ids,{ observe: 'response' });
+ }
 }
 
 
