@@ -97,7 +97,7 @@
           <!-- Name Column -->
           <ng-container matColumnDef="cityName">
             <mat-header-cell *matHeaderCellDef  mat-sort-header> Şehir Adı </mat-header-cell>
-            <mat-cell *matCellDef="let cities"> {{ cities.cityName }} </mat-cell>
+            <mat-cell *matCellDef="let cities"> {{ cities.cityName }}  </mat-cell>
           </ng-container>
           <!-- Weight Column -->         
           <ng-container matColumnDef="actions">
@@ -133,7 +133,7 @@
               </button>
               <mat-menu #menu="matMenu">
                
-                <button  (click)="getDetails('Detaylar',cities)" mat-menu-item>
+                <button  (click)="openDialog('Detaylar',cities)" mat-menu-item>
                   <mat-icon>list</mat-icon>
                   <span>Detaylar</span>
                 </button>                

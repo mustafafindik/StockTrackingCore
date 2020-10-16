@@ -32,13 +32,13 @@
             <input matInput placeholder="Oluşturan" disabled value="{{local_data.createdBy}}">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date:'medium'}}">
+            <input matInput placeholder="Oluşturma Tarihi" disabled value="{{local_data.createDate | date: 'dd/MM/yyyy HH:mm'}}">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Günceleyen" disabled value="{{local_data.modifiedBy}}">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate}}">
+            <input matInput placeholder="Güncelleme Tarihi" disabled value="{{local_data.modifiedDate  | date: 'dd/MM/yyyy HH:mm'}}">
           </mat-form-field>
         </ng-template>
       </div>

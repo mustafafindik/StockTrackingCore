@@ -85,13 +85,6 @@ export class CitiesComponent  implements OnInit{
       }
     }
 
-    getDetails(action,obj){ 
-        this.cityService.getCityById(obj.id).subscribe(data => {      
-           this.openDialog(action,data)                     
-        }
-     );       
-    }
-
 
     openDialog(action,obj) {
       obj.action = action;  

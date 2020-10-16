@@ -58,7 +58,11 @@ namespace StockTrackingCore.Api.Controllers
         {
             try
             {
-               
+                city.CreateDate = DateTime.Now;
+                city.CreatedBy = "AngularDefault";
+                city.ModifiedDate = DateTime.Now;
+                city.ModifiedBy = "AngularDefault";
+
                 _cityService.Add(city);
                 return Ok(city);
             }
@@ -84,6 +88,8 @@ namespace StockTrackingCore.Api.Controllers
         {
             try
             {
+                city.ModifiedDate = DateTime.Now;
+                city.ModifiedBy = "AngularDefault";
 
                 _cityService.Update(city);
                 return Ok(city);
