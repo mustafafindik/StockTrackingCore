@@ -17,7 +17,7 @@ import { CitiesDialogComponent } from './cities-dialog/cities-dialog.component';
   templateUrl: './cities.component.html',
   styleUrls: ['./cities.component.css']
 })
-export class CitiesComponent  implements OnInit,  AfterViewInit{
+export class CitiesComponent  implements OnInit{
  
  
   
@@ -29,14 +29,8 @@ export class CitiesComponent  implements OnInit,  AfterViewInit{
   @ViewChild(MatPaginator ) paginator: MatPaginator;
   @ViewChild(MatSort   ) sort: MatSort;
   
-  constructor(private titleService: Title,private cityService: CityService,public dialog: MatDialog,private _snackBar: MatSnackBar) {    
-
-  }
-  ngAfterViewInit(): void {
-   // this.LoadData();
- 
-  }
-   
+  constructor(private titleService: Title,private cityService: CityService,public dialog: MatDialog,private _snackBar: MatSnackBar) {}
+  
   ngOnInit(): void {
     this.titleService.setTitle("Şehirler");
     this.LoadData();
@@ -46,13 +40,12 @@ export class CitiesComponent  implements OnInit,  AfterViewInit{
     this.cityService.getCities().subscribe(data => {  
       this.dataSource = new MatTableDataSource<City>(data);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;   
+      setTimeout(() => this.dataSource.sort = this.sort);   
       this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
       this.selection.clear();
     });
   }
   
-   
 
      /** Whether the number of selected elements matches the total number of rows. */
      isAllSelected() {
