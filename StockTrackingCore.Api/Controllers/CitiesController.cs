@@ -5,6 +5,7 @@ using StockTrackingCore.Business.Abstract;
 using StockTrackingCore.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StockTrackingCore.Api.Controllers
 {
@@ -20,13 +21,13 @@ namespace StockTrackingCore.Api.Controllers
         }
 
         [Route("getcities")]
-        public ActionResult GetCities()
+        public async Task<ActionResult> GetCities()
         {
             try
             {
-                var cities = _cityService.GetAll();
+                var cities  = _cityService.GetAll();
                 var citiesMap = _mapper.Map<List<CityListDto>>(cities);
-                return Ok(citiesMap);
+                return Ok(cities);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {AfterViewInit, Component,Inject,OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component,Inject,OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,35 +12,34 @@ import { DataDialog } from 'src/app/models/DataDialog';
 import { CityService } from 'src/app/services/city.service';
 import { CitiesDialogComponent } from './cities-dialog/cities-dialog.component';
  
- 
-
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.component.html',
   styleUrls: ['./cities.component.css']
 })
-export class CitiesComponent  implements OnInit{
+export class CitiesComponent  implements OnInit,  AfterViewInit{
  
  
-
+  
   dataSource = new MatTableDataSource<City>();
+  displayedColumns = ['select', 'id', 'cityName',"actions"];
+  selection = new SelectionModel<City>(true, []);
+
+
+  @ViewChild(MatPaginator ) paginator: MatPaginator;
+  @ViewChild(MatSort   ) sort: MatSort;
+  
   constructor(private titleService: Title,private cityService: CityService,public dialog: MatDialog,private _snackBar: MatSnackBar) {    
 
   }
+  ngAfterViewInit(): void {
+   // this.LoadData();
+ 
+  }
+   
   ngOnInit(): void {
     this.titleService.setTitle("Şehirler");
-    this.cityService.getCities().subscribe(data => {  
-      this.dataSource = new MatTableDataSource<City>(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;   
-      this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
-    });
+    this.LoadData();
   }
 
   LoadData() {
@@ -53,11 +52,7 @@ export class CitiesComponent  implements OnInit{
     });
   }
   
-    displayedColumns = ['select', 'id', 'cityName',"actions"];
-    selection = new SelectionModel<City>(true, []);
-
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+   
 
      /** Whether the number of selected elements matches the total number of rows. */
      isAllSelected() {
@@ -83,6 +78,18 @@ export class CitiesComponent  implements OnInit{
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }
+    }
+
+
+    actions(action,obj){
+      if (action ==="Güncelle" || action ==="Detaylar"){
+        this.cityService.getCityById(obj.id).subscribe(data => {
+          this.openDialog(action,data);
+        });
+
+      } else {
+          this.openDialog(action,obj);
+      }  
     }
 
 
