@@ -43,7 +43,9 @@ export class CitiesComponent  implements OnInit{
       console.log(data);
       this.dataSource.paginator = this.paginator;    
       setTimeout(() => this.dataSource.sort = this.sort);   
-      this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
+      this.dataSource.filterPredicate = (data:CityListModel, filterValue: string) => 
+                    data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1
+                    || data.id.toString().toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
       this.selection.clear();
     });
   }

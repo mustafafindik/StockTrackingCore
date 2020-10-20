@@ -37,7 +37,11 @@ export class WarehousesComponent implements OnInit {
       console.log(data);
       this.dataSource.paginator = this.paginator;    
       setTimeout(() => this.dataSource.sort = this.sort);   
-      this.dataSource.filterPredicate = (data:{ warehouseName: string}, filterValue: string) => data.warehouseName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
+      this.dataSource.filterPredicate = (data: WarehouseListModel, filterValue: string) => (
+        data.warehouseName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1) 
+          || (data.address.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1) 
+          || (data.city.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1) 
+          || (data.id.toString().toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1) ;
       this.selection.clear();
     });
   }
