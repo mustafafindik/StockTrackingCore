@@ -8,16 +8,19 @@ namespace StockTrackingCore.Api.Helpers
     {
         public AutoMapperProfiles()
         {
-             
+            //city
             CreateMap<City, CityListDto>();
             CreateMap<City, CityDetailDto>();
 
-
+            //warehouse
             CreateMap<Warehouse, WarehouseListDto>().ForMember(dest => dest.City, opt =>
             {
                 opt.MapFrom(src => src.City.CityName);
             });
-
+            CreateMap<Warehouse, WarehouseDetailDto>().ForMember(dest => dest.City, opt =>
+            {
+                opt.MapFrom(src => src.City.CityName);
+            });
 
         }
     }

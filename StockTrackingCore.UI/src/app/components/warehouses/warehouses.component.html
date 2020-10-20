@@ -14,7 +14,7 @@
         <div class="kt-portlet__head-wrapper">
           <div class="kt-portlet__head-actions">
             &nbsp;
-            <button mat-raised-button matTooltip="Yeni Ekle"  color="accent"  class="mat-button-mt-4"  (click)="actions('Ekle',{})">
+            <button mat-raised-button  color="accent"  class="mat-button-mt-4"  (click)="actions('Ekle',{})">
               <mat-icon>add</mat-icon>
               Yeni Ekle
             </button><!-- Call 'update-stated-dialog' from _shared folder -->
@@ -118,7 +118,7 @@
                   (click)="actions('Güncelle',warehouses)"
                   mat-icon-button
                   color="primary"
-                  aria-label="Example icon button with a heart icon"
+                  matTooltip="Düzenle"
                 >
                   <mat-icon>create</mat-icon></button
                 >&nbsp;
@@ -129,7 +129,7 @@
                 (click)="actions('Sil',warehouses)"
                   mat-icon-button
                   color="warn"
-                  aria-label="Example icon button with a heart icon"
+                  matTooltip="Sil"
                 >
                   <mat-icon>delete</mat-icon></button
                 >&nbsp;
@@ -137,7 +137,7 @@
               <button
                 mat-icon-button
                 [matMenuTriggerFor]="menu"
-                matTooltip="More actions"
+                matTooltip="Daha Fazla"
               >
                 <mat-icon>more_vert</mat-icon>
               </button>

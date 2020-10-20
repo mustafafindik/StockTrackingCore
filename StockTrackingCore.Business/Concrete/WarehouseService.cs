@@ -53,5 +53,14 @@ namespace StockTrackingCore.Business.Concrete
                 _warehouseRepository.Delete(entity);
             }
         }
+
+        public void DeleteSelected(List<int> ids)
+        {
+            var entity = _warehouseRepository.GetAll().Where(x => ids.Contains(x.Id)).ToList();
+            if (entity.Count > 0)
+            {
+                _warehouseRepository.DeleteSelected(entity);
+            }
+        }
     }
 }
