@@ -30,6 +30,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
 import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-dialog.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
+import { WarehousesComponent } from './components/warehouses/warehouses.component';
  
 
 @NgModule({
@@ -43,7 +44,8 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
     HeaderComponent,
     ProductComponent,
     MyDialogComponent,
-    CitiesDialogComponent
+    CitiesDialogComponent,
+    WarehousesComponent
    ],
   imports: [
     BrowserModule,
