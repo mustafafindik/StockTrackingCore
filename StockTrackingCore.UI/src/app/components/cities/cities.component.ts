@@ -40,6 +40,7 @@ export class CitiesComponent  implements OnInit{
     this.cityService.getCities().subscribe(data => {  
       this.dataSource = new MatTableDataSource<City>(data);
       this.dataSource.paginator = this.paginator;
+      
       setTimeout(() => this.dataSource.sort = this.sort);   
       this.dataSource.filterPredicate = (data:{ cityName: string}, filterValue: string) => data.cityName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
       this.selection.clear();
