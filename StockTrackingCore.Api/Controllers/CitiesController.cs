@@ -21,13 +21,13 @@ namespace StockTrackingCore.Api.Controllers
         }
 
         [Route("getcities")]
-        public async Task<ActionResult> GetCities()
+        public ActionResult GetCities()
         {
             try
             {
                 var cities  = _cityService.GetAll();
                 var citiesMap = _mapper.Map<List<CityListDto>>(cities);
-                return Ok(cities);
+                return Ok(citiesMap);
             }
             catch (Exception ex)
             {
@@ -48,8 +48,29 @@ namespace StockTrackingCore.Api.Controllers
         [Route("detail/{id}")]
         public ActionResult GetCityById(int id)
         {
-            var city = _cityService.Get(id);
-            return StatusCode(200, city);
+            try
+            {
+                var city = _cityService.Get(id);
+                if (city != null)
+                {
+                    var cityMap = _mapper.Map<CityDetailDto>(city);
+                    return StatusCode(200, cityMap);
+                }
+                return NotFound(id + " id'li Şehir bulumadı."); //Bad Request
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+
+            }
+         
         }
 
 

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Settings } from '../helpers/Settings';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { City } from '../models/city';
+import { City } from '../models/City/City';
+import { CityListModel } from '../models/City/CityListModel';
+import { CityDetailModel } from '../models/City/CityDetailModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,12 @@ export class CityService {
 
 constructor(private httpClient: HttpClient) { }
 path = Settings.ApiBaseUrl;
-getCities(): Observable<City[]> {
-  return this.httpClient.get<City[]>(this.path + "cities/getcities");
+getCities(): Observable<CityListModel[]> {
+  return this.httpClient.get<CityListModel[]>(this.path + "cities/getcities");
 }
 
-getCityById(cityId): Observable<City> {
-  return this.httpClient.get<City>(this.path + "cities/detail/"+cityId);
+getCityById(cityId): Observable<CityDetailModel> {
+  return this.httpClient.get<CityDetailModel>(this.path + "cities/detail/"+cityId);
 }
 
 

@@ -17,7 +17,7 @@ namespace StockTrackingCore.Api.Helpers
             //});
 
             CreateMap<City, CityListDto>();
-
+            CreateMap<City, CityDetailDto>();
 
 
         }
