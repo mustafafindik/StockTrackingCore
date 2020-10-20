@@ -116,7 +116,7 @@ namespace StockTrackingCore.Api.Controllers
                 warehouse.ModifiedBy = "AngularDefault";
 
                 _warehouseService.Update(warehouse);
-                return Ok(city);
+                return Ok(warehouse);
             }
             catch (Exception ex)
             {

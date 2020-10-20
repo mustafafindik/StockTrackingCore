@@ -19,7 +19,7 @@ namespace StockTrackingCore.Api.Controllers
     [Route("api/Auth")]
     public class AuthController : Controller
     {
-        private IAuthService _authService;
+        private readonly IAuthService _authService;
         private readonly IConfiguration _configuration;
 
         public AuthController(IAuthService authService, IConfiguration configuration)
@@ -46,7 +46,7 @@ namespace StockTrackingCore.Api.Controllers
                 UserName = registerDto.UserName
             };
 
-            var createdUser = await _authService.Register(userToCreate, registerDto.Password);
+            await _authService.Register(userToCreate, registerDto.Password);
             return StatusCode(201);
         }
 
