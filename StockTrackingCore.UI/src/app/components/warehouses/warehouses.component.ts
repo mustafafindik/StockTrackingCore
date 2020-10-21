@@ -99,6 +99,7 @@ export class WarehousesComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if(result.event == 'Ekle'){
           console.log(result.data);
+
           this.warehouseservice.add(result.data).subscribe(data => {           
               console.log(data.status);
               console.log(data.body);  
@@ -111,7 +112,7 @@ export class WarehousesComponent implements OnInit {
          });
          
          
-        }else if(result.event == 'Güncelle'){
+        }else if(result.event == 'Güncelle'){        
           console.log(result.data);
           this.warehouseservice.update(result.data).subscribe(data => {           
               console.log(data.status);

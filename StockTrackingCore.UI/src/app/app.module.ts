@@ -32,7 +32,8 @@ import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
 import { WarehousesComponent } from './components/warehouses/warehouses.component';
 import { WarehouseDialogComponent } from './components/warehouses/warehouse-dialog/warehouse-dialog.component';
- 
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [						
@@ -71,6 +72,7 @@ import { WarehouseDialogComponent } from './components/warehouses/warehouse-dial
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    MatSelectModule
     
   ],
   providers: [

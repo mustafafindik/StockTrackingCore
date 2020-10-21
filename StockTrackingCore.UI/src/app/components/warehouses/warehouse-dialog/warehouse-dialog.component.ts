@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CityDetailModel } from 'src/app/models/City/CityDetailModel';
+import { CityListModel } from 'src/app/models/City/CityListModel';
 import { WarehouseListModel } from 'src/app/models/Warehouse/WarehouseListModel';
+import { CityService } from 'src/app/services/city.service';
 
 @Component({
   selector: 'app-warehouse-dialog',
@@ -10,13 +13,28 @@ import { WarehouseListModel } from 'src/app/models/Warehouse/WarehouseListModel'
 })
 export class WarehouseDialogComponent  {
 
+  action:string;
+  local_data:any;
+  warehouseAddForm: FormGroup;
+  citySelectList : CityListModel[];
+  
+
   constructor(
     public dialogRef: MatDialogRef<WarehouseDialogComponent>,
     //@Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: WarehouseListModel, private formBuilder: FormBuilder,) {
-  
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: WarehouseListModel,private cityservice:CityService, private formBuilder: FormBuilder,) {
     this.local_data = {...data};
+    console.log(this.local_data)
     this.action = this.local_data.action;
+    if(this.action == "Ekle" || this.action =="Güncelle"){
+      this.cityservice.getCities().subscribe(data=>{
+        console.log(data)
+        this.citySelectList = data;
+      
+      });
+    }
+
+
     this.createForm();
     this.dialogRef.disableClose = true;
   
@@ -24,21 +42,16 @@ export class WarehouseDialogComponent  {
   }
 
 
-  action:string;
-  local_data:any;
-  warehouseAddForm: FormGroup;
-
-
   createForm() {
     this.warehouseAddForm = new FormGroup({
       warehouseName: new FormControl(this.local_data.warehoseName, [
         Validators.required,      
       ]),
-      address: new FormControl(this.local_data.warehoseName, [
+      address: new FormControl(this.local_data.address, [
         Validators.minLength(10),      
       ]),
-      city: new FormControl(this.local_data.warehoseName, [
-        Validators.required,      
+      city: new FormControl(this.local_data.city, [
+              
       ]),
     });
 
@@ -46,7 +59,9 @@ export class WarehouseDialogComponent  {
 
   doAction(){
     if(this.warehouseAddForm.valid){
-    this.dialogRef.close({event:this.action,data:this.local_data});
+      this.local_data["cityid"] = this.local_data["city"]
+      delete  this.local_data["city"]
+      this.dialogRef.close({event:this.action,data:this.local_data});
     }else{
       console.log("Not Valid")
     }

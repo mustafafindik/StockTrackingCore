@@ -21,10 +21,12 @@
           <input placeholder="Adres" type="text" matInput id="address" class="form-control"  formControlName="address" [(ngModel)]="local_data.address"   required>
           <mat-error *ngIf="warehouseAddForm.get('address').hasError('required')"> Minimum 4 karakter olmalıdır.</mat-error>
         </mat-form-field>
-        <mat-form-field style="display: block;">
-          <input placeholder="Şehir" type="text" matInput id="city" class="form-control"  formControlName="city" [(ngModel)]="local_data.city"   required>
-          <mat-error *ngIf="warehouseAddForm.get('city').hasError('required')">Şehir Seçimi zorunludur</mat-error>
-
+        <mat-form-field appearance="fill">
+          <mat-label>Şehir</mat-label>
+          <mat-select [(value)]="local_data.cityId">
+            
+            <mat-option  [value]="option.id" *ngFor="let option of citySelectList">{{ option.cityName }}</mat-option>
+          </mat-select>
         </mat-form-field>
       </ng-template>
       

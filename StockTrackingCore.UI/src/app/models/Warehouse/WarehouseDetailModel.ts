@@ -3,6 +3,7 @@ export class WarehouseDetailModel {
     warehouseName :string;
     address:string;
     city : string;
+    CityId : number;
     createDate:Date;
     createdBy:string;
     modifiedBy:string;
