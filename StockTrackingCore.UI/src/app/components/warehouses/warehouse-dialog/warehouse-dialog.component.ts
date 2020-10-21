@@ -18,7 +18,6 @@ export class WarehouseDialogComponent  {
   warehouseAddForm: FormGroup;
   citySelectList : CityListModel[];
   
-
   constructor(
     public dialogRef: MatDialogRef<WarehouseDialogComponent>,
     //@Optional() is used to prevent error if no data is passed
@@ -34,11 +33,11 @@ export class WarehouseDialogComponent  {
       });
     }
 
-
+   
     this.createForm();
     this.dialogRef.disableClose = true;
   
-    
+    console.log(this.warehouseAddForm.get('address').touched)
   }
 
 
@@ -48,21 +47,30 @@ export class WarehouseDialogComponent  {
         Validators.required,      
       ]),
       address: new FormControl(this.local_data.address, [
-        Validators.minLength(10),      
+        Validators.minLength(10), 
+        Validators.required,
+        Validators.maxLength(100)     
       ]),
       city: new FormControl(this.local_data.city, [
-              
+        Validators.required,  
       ]),
     });
 
   }
 
   doAction(){
+  
     if(this.warehouseAddForm.valid){
       this.local_data["cityid"] = this.local_data["city"]
       delete  this.local_data["city"]
       this.dialogRef.close({event:this.action,data:this.local_data});
     }else{
+     
+      this.warehouseAddForm.get("address").markAsTouched({onlySelf:true});
+      this.warehouseAddForm.get("warehouseName").markAsTouched({onlySelf:true});
+      this.warehouseAddForm.get("city").markAsTouched({onlySelf:true});
+
+      console.log(this.warehouseAddForm.get("address").touched)
       console.log("Not Valid")
     }
   }
