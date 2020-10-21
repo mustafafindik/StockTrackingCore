@@ -31,6 +31,7 @@ import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
 import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-dialog.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
 import { WarehousesComponent } from './components/warehouses/warehouses.component';
+import { WarehouseDialogComponent } from './components/warehouses/warehouse-dialog/warehouse-dialog.component';
  
 
 @NgModule({
@@ -45,7 +46,8 @@ import { WarehousesComponent } from './components/warehouses/warehouses.componen
     ProductComponent,
     MyDialogComponent,
     CitiesDialogComponent,
-    WarehousesComponent
+    WarehousesComponent,
+    WarehouseDialogComponent
    ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ import { WarehousesComponent } from './components/warehouses/warehouses.componen
     Title
   ],
   bootstrap: [AppComponent],
-  entryComponents : [MyDialogComponent,CitiesDialogComponent]
+  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent]
 })
 export class AppModule { 
 

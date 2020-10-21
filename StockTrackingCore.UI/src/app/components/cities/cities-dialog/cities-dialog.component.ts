@@ -21,7 +21,7 @@ export class CitiesDialogComponent  {
   
     this.local_data = {...data};
     this.action = this.local_data.action;
-    this.createCityForm();
+    this.createForm();
     this.dialogRef.disableClose = true;
   
     
@@ -32,7 +32,7 @@ export class CitiesDialogComponent  {
   cityAddForm: FormGroup;
 
 
-  createCityForm() {
+  createForm() {
     this.cityAddForm = new FormGroup({
       cityName: new FormControl(this.local_data.cityName, [
         Validators.required,      

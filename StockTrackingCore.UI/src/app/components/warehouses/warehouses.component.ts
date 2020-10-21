@@ -6,8 +6,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Title } from '@angular/platform-browser';
+import { MyDialogComponent } from 'src/app/extensions/dialog/Mydialog.component';
+import { DataDialog } from 'src/app/models/DataDialog';
 import { WarehouseListModel } from 'src/app/models/Warehouse/WarehouseListModel';
 import { WarehouseService } from 'src/app/services/warehouse.service';
+import { WarehouseDialogComponent } from './warehouse-dialog/warehouse-dialog.component';
 
 @Component({
   selector: 'app-warehouses',
@@ -75,11 +78,100 @@ export class WarehousesComponent implements OnInit {
 
 
     actions(action,obj){
-     
+      if (action ==="Güncelle" || action ==="Detaylar"){
+        this.warehouseservice.getWarehouseById(obj.id).subscribe(data => {
+          console.log(data);
+          this.openDialog(action,data);
+        });
+
+      } else {
+          this.openDialog(action,obj);
+      }  
     }
+
+
+    openDialog(action,obj) {
+      obj.action = action;  
+      const dialogRef = this.dialog.open(WarehouseDialogComponent,  {             
+        data:obj
+      });
   
-    deleteCities(): void {
+      dialogRef.afterClosed().subscribe(result => {
+        if(result.event == 'Ekle'){
+          console.log(result.data);
+          this.warehouseservice.add(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Eklendi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
+         
+         
+        }else if(result.event == 'Güncelle'){
+          console.log(result.data);
+          this.warehouseservice.update(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Düzenlendi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
+
+        }else if(result.event == 'Sil'){
+          console.log(result.data);
+          this.warehouseservice.delete(result.data).subscribe(data => {           
+              console.log(data.status);
+              console.log(data.body);  
+              this._snackBar.open(data.body.cityName + " Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+              this.LoadData();           
+         }, error => {
+             console.log(error.status);
+             console.log(error.error);  
+             this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+         });
+        }else  if(result.event == 'Vazgeç'){
+          this._snackBar.open("Vazgeçildi", "Tamam", {duration: 2000,});
+        }
+      });
+    }
+   
+
  
+
+    
+    deleteWarehouses(): void {
+      const selectedIds:Number[] = [];
+      const dialogRef = this.dialog.open(MyDialogComponent, {
+        data: new DataDialog ( "Seçili Depoları Sil" , "Seçili Depolaro Silmek İstediğinizden Emin Misiniz ? ", "Kapat","Sil")
+      });     
+      dialogRef.afterClosed().subscribe(result => {
+        
+        if(result =="Yes" ){
+          this.selection.selected.forEach(function (value) {
+            selectedIds.push(value.id);
+          }); 
+          this.warehouseservice.deleteselected(selectedIds).subscribe(data => {           
+            console.log(data.status); 
+            this._snackBar.open("Seçilen Şehirler Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+            this.LoadData();           
+       }, error => {
+           console.log(error.status);
+           console.log(error.error);  
+           this._snackBar.open("Hata : " +error.error, "Tamam", {duration: 8000,});  
+       });
+          //Silme Gönderme Servis ile Eğğer Ok gelirse
+          this._snackBar.open("Silme İşlemi Tamamlandı.", "Tamam", {duration: 2000,});
+        }else {
+          this._snackBar.open("Silme İşleminden Vazgeçildi.", "Tamam", {duration: 2000,});
+        }         
+      }); 
     }
 
 
