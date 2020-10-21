@@ -23,7 +23,7 @@
           <mat-error *ngIf="warehouseAddForm.get('address').hasError('required') && warehouseAddForm.get('address').touched "> Adres Alanı Zorunludur</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill"  style="display: block;margin-top:15px;">
-          <mat-label>Şehir</mat-label>
+          <mat-label>Şehir Seçiniz</mat-label>
           <mat-select [(value)]="local_data.cityId"  formControlName="city" required>           
             <mat-option  [value]="option.id" *ngFor="let option of citySelectList">{{ option.cityName }}</mat-option>
           </mat-select>
