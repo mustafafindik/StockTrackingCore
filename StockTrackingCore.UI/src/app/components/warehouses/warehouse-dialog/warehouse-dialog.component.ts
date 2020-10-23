@@ -17,6 +17,7 @@ export class WarehouseDialogComponent  {
   local_data:any;
   warehouseAddForm: FormGroup;
   citySelectList : CityListModel[];
+  selectedOption = '1';
   
   constructor(
     public dialogRef: MatDialogRef<WarehouseDialogComponent>,
@@ -28,15 +29,13 @@ export class WarehouseDialogComponent  {
     if(this.action == "Ekle" || this.action =="Güncelle"){
       this.cityservice.getCities().subscribe(data=>{
         console.log(data)
-        this.citySelectList = data;
-      
+        this.citySelectList = data;   
       });
     }
-
-   
     this.createForm();
     this.dialogRef.disableClose = true;
-  
+    this.warehouseAddForm.controls['city'].setValue(this.local_data.cityId)
+
     console.log(this.warehouseAddForm.get('address').touched)
   }
 
@@ -61,7 +60,6 @@ export class WarehouseDialogComponent  {
   doAction(){
   
     if(this.warehouseAddForm.valid){
-      this.local_data["cityid"] = this.local_data["city"]
       delete  this.local_data["city"]
       this.dialogRef.close({event:this.action,data:this.local_data});
     }else{

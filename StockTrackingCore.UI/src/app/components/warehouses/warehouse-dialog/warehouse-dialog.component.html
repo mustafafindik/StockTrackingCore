@@ -2,7 +2,7 @@
   <div class="kt-portlet__head">
     <div class="kt-portlet__head-label">
       <h3 class="kt-portlet__head-title">
-        Depo <strong>{{action}}</strong> 
+        Depo <strong>{{action}}</strong>  {{local_data.cityId}}
       </h3>
     </div>
   </div>
@@ -24,7 +24,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill"  style="display: block;margin-top:15px;">
           <mat-label>Şehir Seçiniz</mat-label>
-          <mat-select [(value)]="local_data.cityId"  formControlName="city" required>           
+          <mat-select [(value)]="local_data.cityId"  formControlName="city"  required>           
             <mat-option  [value]="option.id" *ngFor="let option of citySelectList">{{ option.cityName }}</mat-option>
           </mat-select>
           <mat-error *ngIf="warehouseAddForm.get('city').hasError('required') && warehouseAddForm.get('city').touched"> Adres Alanı Zorunludur</mat-error>
