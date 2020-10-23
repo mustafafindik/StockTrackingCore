@@ -103,7 +103,7 @@ export class WarehousesComponent implements OnInit {
           this.warehouseservice.add(result.data).subscribe(data => {           
               console.log(data.status);
               console.log(data.body);  
-              this._snackBar.open(data.body.cityName + " Başarıyla Eklendi.", "Tamam", {duration: 5000,});   
+              this._snackBar.open(data.body.warehouseName + " Başarıyla Eklendi.", "Tamam", {duration: 5000,});   
               this.LoadData();           
          }, error => {
              console.log(error.status);
@@ -117,7 +117,7 @@ export class WarehousesComponent implements OnInit {
           this.warehouseservice.update(result.data).subscribe(data => {           
               console.log(data.status);
               console.log(data.body);  
-              this._snackBar.open(data.body.cityName + " Başarıyla Düzenlendi.", "Tamam", {duration: 5000,});   
+              this._snackBar.open(data.body.warehouseName + " Başarıyla Düzenlendi.", "Tamam", {duration: 5000,});   
               this.LoadData();           
          }, error => {
              console.log(error.status);
@@ -130,7 +130,7 @@ export class WarehousesComponent implements OnInit {
           this.warehouseservice.delete(result.data).subscribe(data => {           
               console.log(data.status);
               console.log(data.body);  
-              this._snackBar.open(data.body.cityName + " Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+              this._snackBar.open(data.body.warehouseName + " Başarıyla Silindi.", "Tamam", {duration: 5000,});   
               this.LoadData();           
          }, error => {
              console.log(error.status);
@@ -160,7 +160,7 @@ export class WarehousesComponent implements OnInit {
           }); 
           this.warehouseservice.deleteselected(selectedIds).subscribe(data => {           
             console.log(data.status); 
-            this._snackBar.open("Seçilen Şehirler Başarıyla Silindi.", "Tamam", {duration: 5000,});   
+            this._snackBar.open("Seçilen Depolar Başarıyla Silindi.", "Tamam", {duration: 5000,});   
             this.LoadData();           
        }, error => {
            console.log(error.status);
