@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingCore.Business"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingCore.Api", "StockTrackingCore.Api\StockTrackingCore.Api.csproj", "{2EE4D25E-5C11-498B-9F43-6CB428A8070A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularTest", "AngularTest\AngularTest.csproj", "{DFC42AFE-BF3A-4513-8423-26911F9809F6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{2EE4D25E-5C11-498B-9F43-6CB428A8070A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EE4D25E-5C11-498B-9F43-6CB428A8070A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EE4D25E-5C11-498B-9F43-6CB428A8070A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFC42AFE-BF3A-4513-8423-26911F9809F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFC42AFE-BF3A-4513-8423-26911F9809F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFC42AFE-BF3A-4513-8423-26911F9809F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFC42AFE-BF3A-4513-8423-26911F9809F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
