@@ -35,6 +35,8 @@ import { WarehouseDialogComponent } from './components/warehouses/warehouse-dial
 import {MatSelectModule} from '@angular/material/select';
 import { UnitComponent } from './components/unit/unit.component';
 import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialog.component';
+import { VatratesComponent } from './components/vatrates/vatrates.component';
+import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vatrate-dialog.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialo
     WarehousesComponent,
     WarehouseDialogComponent,
     UnitComponent,
-    UnitsDialogComponent
+    UnitsDialogComponent,
+    VatratesComponent,
+    VatrateDialogComponent
    ],
   imports: [
     BrowserModule,
@@ -84,7 +88,7 @@ import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialo
     Title
   ],
   bootstrap: [AppComponent],
-  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent,UnitsDialogComponent]
+  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent,UnitsDialogComponent,VatrateDialogComponent]
 })
 export class AppModule { 
 
