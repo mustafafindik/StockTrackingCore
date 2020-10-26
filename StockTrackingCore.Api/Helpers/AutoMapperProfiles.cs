@@ -22,6 +22,14 @@ namespace StockTrackingCore.Api.Helpers
                 opt.MapFrom(src => src.City.CityName);
             });
 
+            //Unit
+            CreateMap<Unit, UnitListDto>();
+            CreateMap<Unit, UnitDetailDto>();
+
+            //VatRate
+            CreateMap<VatRate, VatRateListDto>();
+            CreateMap<VatRate, VatRateDetailDto>();
+
         }
     }
 }

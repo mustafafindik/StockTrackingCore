@@ -12,5 +12,6 @@ namespace StockTrackingCore.Business.Abstract
         void Add(VatRate vatRate);
         void Update(VatRate vatRate);
         void Delete(int id);
+        void DeleteSelected(List<int> ids);
     }
 }

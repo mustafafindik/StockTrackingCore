@@ -12,5 +12,6 @@ namespace StockTrackingCore.Business.Abstract
         void Add(Unit unit);
         void Update(Unit unit);
         void Delete(int id);
+        void DeleteSelected(List<int> ids);
     }
 }
