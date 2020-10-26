@@ -1,105 +1,110 @@
- <!-- begin:: Aside -->
- <button class="kt-aside-close" id="kt_aside_close_btn">
+<!-- begin:: Aside -->
+<button class="kt-aside-close" id="kt_aside_close_btn">
   <i class="la la-close"></i>
 </button>
-<div
-  class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
-  id="kt_aside"
->
+<div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
   <!-- begin:: Aside Menu -->
-  <div
-    class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid"
-    id="kt_aside_menu_wrapper"
-  >
-    <div
-      id="kt_aside_menu"
-      class="kt-aside-menu"
-      data-ktmenu-vertical="1"
-      data-ktmenu-scroll="1"
-      data-ktmenu-dropdown-timeout="500"
-    >
+  <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+    <div id="kt_aside_menu" class="kt-aside-menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1"
+      data-ktmenu-dropdown-timeout="500">
       <ul class="kt-menu__nav">
-        <li
-          class="kt-menu__item " routerLinkActive="kt-menu__item--active"
-          aria-haspopup="true"
-        >
-          <a class="kt-menu__link" routerLink="dashboard"
-            ><i class="kt-menu__link-icon flaticon2-protection"></i
-            ><span class="kt-menu__link-text">Anasayfa</span></a
-          >
+        <li class="kt-menu__item " routerLinkActive="kt-menu__item--active" aria-haspopup="true">
+          <a class="kt-menu__link" routerLink="dashboard"><i class="kt-menu__link-icon flaticon2-protection"></i><span
+              class="kt-menu__link-text">Anasayfa</span></a>
         </li>
         <li class="kt-menu__section ">
           <h4 class="kt-menu__section-text">Operasyon</h4>
           <i class="kt-menu__section-icon flaticon-more-v2"></i>
-      </li>
-        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active" >
-          <a class="kt-menu__link" routerLink="currentstocks" 
-            ><i class="kt-menu__link-icon 
-            flaticon2-calendar-5"></i
-            ><span class="kt-menu__link-text">Güncel Stok</span></a
-          >
-        </li>
-        <li class="kt-menu__item"   routerLinkActive="kt-menu__item--active">
-          <a href="#" class="kt-menu__link" routerLink="stockmovements" 
-            ><i class="kt-menu__link-icon flaticon2-hourglass-1"></i
-            ><span class="kt-menu__link-text">Stok Hareketleri</span></a
-          >
-        </li>
-        
-        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active" >
-          <a href="#" class="kt-menu__link" routerLink="addstock" 
-            ><i class="kt-menu__link-icon flaticon2-calendar-6"></i
-            ><span class="kt-menu__link-text">Stok Ekle</span></a
-          >
-        </li>     
-        <li class="kt-menu__section ">
-          <h4 class="kt-menu__section-text">Tanımlamalar</h4>
-          <i class="kt-menu__section-icon flaticon-more-v2"></i>
-      </li>
-      <li class="kt-menu__item"  routerLinkActive="kt-menu__item--active">
-        <a href="#" class="kt-menu__link" routerLink="categorymanagement" 
-          ><i class="kt-menu__link-icon flaticon2-indent-dots"></i
-          ><span class="kt-menu__link-text">Kategoriler</span></a
-        >
-      </li>
-        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
-          <a routerLink="product" class="kt-menu__link"
-            ><i class="kt-menu__link-icon 
-            flaticon2-list-2"></i
-            ><span class="kt-menu__link-text">Ürünler</span></a
-          >
         </li>
         <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
-          <a href="#" class="kt-menu__link" routerLink="warehouses" 
-            ><i class="kt-menu__link-icon flaticon2-shelter"></i
-            ><span class="kt-menu__link-text">Depolar</span></a
-          >
+          <a class="kt-menu__link" routerLink="currentstocks"><i class="kt-menu__link-icon 
+            flaticon2-calendar-5"></i><span class="kt-menu__link-text">Güncel Stok</span></a>
         </li>
         <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
-          <a  class="kt-menu__link" routerLink="cities" 
-            ><i class="kt-menu__link-icon flaticon2-placeholder"></i
-            ><span class="kt-menu__link-text">Şehirler</span></a
-          >
-        </li>
-        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
-          <a href="#" class="kt-menu__link" routerLink="units" 
-            ><i class="kt-menu__link-icon 
-            flaticon2-layers-1"></i
-            ><span class="kt-menu__link-text">Birimler</span></a
-          >
+          <a href="#" class="kt-menu__link" routerLink="stockmovements"><i
+              class="kt-menu__link-icon flaticon2-hourglass-1"></i><span class="kt-menu__link-text">Stok
+              Hareketleri</span></a>
         </li>
 
+        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+          <a href="#" class="kt-menu__link" routerLink="addstock"><i
+              class="kt-menu__link-icon flaticon2-calendar-6"></i><span class="kt-menu__link-text">Stok Ekle</span></a>
+        </li>
+        <li class="kt-menu__section ">
+          <h4 class="kt-menu__section-text">Genel</h4>
+          <i class="kt-menu__section-icon flaticon-more-v2"></i>
+        </li>
+
+
+        <li class="kt-menu__item kt-menu__item--submenu " routerLinkActive="kt-menu__item--open">
+          <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+            <i class="kt-menu__link-icon flaticon2-writing"></i>
+            <span class="kt-menu__link-text">Tanımlamalar</span><i
+              class="kt-menu__ver-arrow la la-angle-right"></i>
+            </a>
+          <div class="kt-menu__submenu " kt-hidden-height="80">
+            <span class="kt-menu__arrow"></span>
+            <ul class="kt-menu__subnav">
+              <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span
+                    class="kt-menu__link-text">Tanımlamalar</span></span></li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a href="#" class="kt-menu__link" routerLink="categorymanagement"><i
+                    class="kt-menu__link-icon flaticon2-indent-dots"></i><span
+                    class="kt-menu__link-text">Kategoriler</span></a>
+              </li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a routerLink="product" class="kt-menu__link"><i class="kt-menu__link-icon 
+                  flaticon2-list-2"></i><span class="kt-menu__link-text">Ürünler</span></a>
+              </li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a href="#" class="kt-menu__link" routerLink="warehouses"><i
+                    class="kt-menu__link-icon flaticon2-shelter"></i><span class="kt-menu__link-text">Depolar</span></a>
+              </li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a class="kt-menu__link" routerLink="cities"><i
+                    class="kt-menu__link-icon flaticon2-placeholder"></i><span
+                    class="kt-menu__link-text">Şehirler</span></a>
+              </li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a href="#" class="kt-menu__link" routerLink="units"><i class="kt-menu__link-icon 
+                    flaticon2-layers-1"></i><span class="kt-menu__link-text">Birimler</span></a>
+              </li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a href="#" class="kt-menu__link" routerLink="vatrates"><i class="kt-menu__link-icon 
+                  flaticon2-zig-zag-line-sign
+                  "></i><span class="kt-menu__link-text">KDV Oranları</span></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+
+        <li class="kt-menu__item kt-menu__item--submenu"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i
+              class="kt-menu__link-icon flaticon2-analytics-2
+              "></i><span class="kt-menu__link-text">Raporlar</span><i
+              class="kt-menu__ver-arrow la la-angle-right"></i></a>
+          <div class="kt-menu__submenu " kt-hidden-height="80">
+            <span class="kt-menu__arrow"></span>
+            <ul class="kt-menu__subnav">
+              <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span
+                    class="kt-menu__link-text">Tanımlamalar</span></span></li>
+              <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+                <a href="#" class="kt-menu__link" routerLink="categorymanagement"><i
+                    class="kt-menu__link-icon flaticon2-graph"></i><span
+                    class="kt-menu__link-text">Stok Raporu</span></a>
+              </li>
+            
+            </ul>
+          </div>
+        </li>
         <li class="kt-menu__section ">
           <h4 class="kt-menu__section-text">Yönetim</h4>
           <i class="kt-menu__section-icon flaticon-more-v2"></i>
-      </li>
-      <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
-        <a href="#" class="kt-menu__link" routerLink="users" 
-          ><i class="kt-menu__link-icon 
-          flaticon2-user"></i
-          ><span class="kt-menu__link-text">Kullanıcılar</span></a
-        >
-      </li>
+        </li>
+        <li class="kt-menu__item" routerLinkActive="kt-menu__item--active">
+          <a href="#" class="kt-menu__link" routerLink="users"><i class="kt-menu__link-icon 
+          flaticon2-user"></i><span class="kt-menu__link-text">Kullanıcılar</span></a>
+        </li>
       </ul>
     </div>
   </div>
