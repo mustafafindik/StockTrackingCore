@@ -42,7 +42,7 @@ export class UnitComponent implements OnInit {
       this.dataSource.paginator = this.paginator;    
       setTimeout(() => this.dataSource.sort = this.sort);   
       this.dataSource.filterPredicate = (data:UnitListModel, filterValue: string) => 
-                    data.UnitName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1
+                    data.unitName.toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1
                     || data.id.toString().toLocaleLowerCase().indexOf(filterValue.toLocaleLowerCase()) !== -1;
       this.selection.clear();
     });
