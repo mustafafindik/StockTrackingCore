@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/Dashboard/Dashboard.component';
 import { ProductComponent } from './components/product/product.component';
 import { WarehousesComponent } from './components/warehouses/warehouses.component';
 import { VatratesComponent } from './components/vatrates/vatrates.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
  
 const routes: Routes = [ 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "products", component: ProductComponent },
   { path: "units", component: UnitComponent },
   { path: "vatrates", component: VatratesComponent },
+  { path: "categories", component: CategoriesComponent },
   { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },
   { path: "**", redirectTo: "dashboard", pathMatch: "full" }];
  

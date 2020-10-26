@@ -1,6 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
- 
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,33 +14,34 @@ import { SidebarComponent } from './modules/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
-import { MatProgressSpinnerModule,} from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule, } from "@angular/material/progress-spinner";
 import { MatPaginatorIntl, MatPaginatorModule } from "@angular/material/paginator";
-import { MatInputModule,  } from "@angular/material/input";
+import { MatInputModule, } from "@angular/material/input";
 import { CustomPaginator } from './helpers/CustomPaginatorConfiguration';
 import { ProductComponent } from './components/product/product.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar/';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar/';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MyDialogComponent } from './extensions/dialog/Mydialog.component';
 import { CitiesDialogComponent } from './components/cities/cities-dialog/cities-dialog.component';
-import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { WarehousesComponent } from './components/warehouses/warehouses.component';
 import { WarehouseDialogComponent } from './components/warehouses/warehouse-dialog/warehouse-dialog.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { UnitComponent } from './components/unit/unit.component';
 import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialog.component';
 import { VatratesComponent } from './components/vatrates/vatrates.component';
 import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vatrate-dialog.component';
-
+import { CategoriesComponent } from './components/categories/categories.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
-  declarations: [						
+  declarations: [
     AppComponent,
     DashboardComponent,
     CitiesComponent,
@@ -56,8 +57,9 @@ import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vat
     UnitComponent,
     UnitsDialogComponent,
     VatratesComponent,
-    VatrateDialogComponent
-   ],
+    VatrateDialogComponent,
+    CategoriesComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -79,18 +81,19 @@ import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vat
     MatFormFieldModule,
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-    MatSelectModule
-    
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    MatSelectModule,
+    MatTreeModule
+
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: CustomPaginator() },
     Title
   ],
   bootstrap: [AppComponent],
-  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent,UnitsDialogComponent,VatrateDialogComponent]
+  entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent]
 })
-export class AppModule { 
+export class AppModule {
 
-  
+
 }
