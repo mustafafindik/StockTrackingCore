@@ -33,6 +33,8 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms'
 import { WarehousesComponent } from './components/warehouses/warehouses.component';
 import { WarehouseDialogComponent } from './components/warehouses/warehouse-dialog/warehouse-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import { UnitComponent } from './components/unit/unit.component';
+import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialog.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {MatSelectModule} from '@angular/material/select';
     MyDialogComponent,
     CitiesDialogComponent,
     WarehousesComponent,
-    WarehouseDialogComponent
+    WarehouseDialogComponent,
+    UnitComponent,
+    UnitsDialogComponent
    ],
   imports: [
     BrowserModule,
@@ -80,7 +84,7 @@ import {MatSelectModule} from '@angular/material/select';
     Title
   ],
   bootstrap: [AppComponent],
-  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent]
+  entryComponents : [MyDialogComponent,CitiesDialogComponent,WarehouseDialogComponent,UnitsDialogComponent]
 })
 export class AppModule { 
 
