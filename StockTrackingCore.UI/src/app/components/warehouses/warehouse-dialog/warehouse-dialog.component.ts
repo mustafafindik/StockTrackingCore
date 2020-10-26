@@ -58,7 +58,7 @@ export class WarehouseDialogComponent  {
   }
 
   doAction(){
-  
+  if(this.action === "Ekle" || this.action==="Güncelle"){
     if(this.warehouseAddForm.valid){
       delete  this.local_data["city"]
       this.dialogRef.close({event:this.action,data:this.local_data});
@@ -68,9 +68,12 @@ export class WarehouseDialogComponent  {
       this.warehouseAddForm.get("warehouseName").markAsTouched({onlySelf:true});
       this.warehouseAddForm.get("city").markAsTouched({onlySelf:true});
 
-      console.log(this.warehouseAddForm.get("address").touched)
       console.log("Not Valid")
     }
+  }else{
+    this.dialogRef.close({event:this.action,data:this.local_data});
+  }
+    
   }
 
   closeDialog(){

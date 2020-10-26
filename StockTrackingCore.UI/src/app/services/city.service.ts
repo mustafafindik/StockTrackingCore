@@ -11,32 +11,32 @@ import { CityDetailModel } from '../models/City/CityDetailModel';
 })
 export class CityService {
 
-constructor(private httpClient: HttpClient) { }
-path = Settings.ApiBaseUrl;
-getCities(): Observable<CityListModel[]> {
-  return this.httpClient.get<CityListModel[]>(this.path + "cities/getcities");
-}
+  constructor(private httpClient: HttpClient) { }
+  path = Settings.ApiBaseUrl;
+  getCities(): Observable<CityListModel[]> {
+    return this.httpClient.get<CityListModel[]>(this.path + "cities/getcities");
+  }
 
-getCityById(cityId): Observable<CityDetailModel> {
-  return this.httpClient.get<CityDetailModel>(this.path + "cities/detail/"+cityId);
-}
+  getCityById(cityId: number): Observable<CityDetailModel> {
+    return this.httpClient.get<CityDetailModel>(this.path + "cities/detail/" + cityId);
+  }
 
 
-add(city): Observable<any> {
-  return  this.httpClient.post(this.path + 'cities/add',city,{ observe: 'response' });
- }
+  add(city: City): Observable<any> {
+    return this.httpClient.post(this.path + 'cities/add', city, { observe: 'response' });
+  }
 
- update(city): Observable<any> {
-  return  this.httpClient.put(this.path + 'cities/update',city,{ observe: 'response' });
- }
+  update(city: City): Observable<any> {
+    return this.httpClient.put(this.path + 'cities/update', city, { observe: 'response' });
+  }
 
- delete(city): Observable<any> {
-  return  this.httpClient.delete(this.path + 'cities/delete/'+city["id"],{ observe: 'response' });
- }
+  delete(city: City): Observable<any> {
+    return this.httpClient.delete(this.path + 'cities/delete/' + city["id"], { observe: 'response' });
+  }
 
- deleteselected(ids): Observable<any> {
-  return  this.httpClient.post(this.path + 'cities/deleteselected' ,ids,{ observe: 'response' });
- }
+  deleteselected(ids: Number[]): Observable<any> {
+    return this.httpClient.post(this.path + 'cities/deleteselected', ids, { observe: 'response' });
+  }
 }
 
 
