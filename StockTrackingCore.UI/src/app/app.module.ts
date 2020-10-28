@@ -37,7 +37,7 @@ import { UnitComponent } from './components/unit/unit.component';
 import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialog.component';
 import { VatratesComponent } from './components/vatrates/vatrates.component';
 import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vatrate-dialog.component';
-import { CategoriesComponent, ChecklistDatabase } from './components/categories/categories.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
@@ -90,7 +90,6 @@ import { MatTreeModule } from '@angular/material/tree';
   providers: [
     { provide: MatPaginatorIntl, useValue: CustomPaginator() },
     Title,
-    ChecklistDatabase
   ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent]
