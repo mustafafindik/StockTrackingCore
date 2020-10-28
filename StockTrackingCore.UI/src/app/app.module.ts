@@ -37,7 +37,7 @@ import { UnitComponent } from './components/unit/unit.component';
 import { UnitsDialogComponent } from './components/unit/units-dialog/units-dialog.component';
 import { VatratesComponent } from './components/vatrates/vatrates.component';
 import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vatrate-dialog.component';
-import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesComponent, ChecklistDatabase } from './components/categories/categories.component';
 import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
@@ -58,7 +58,7 @@ import { MatTreeModule } from '@angular/material/tree';
     UnitsDialogComponent,
     VatratesComponent,
     VatrateDialogComponent,
-    CategoriesComponent
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,12 +83,14 @@ import { MatTreeModule } from '@angular/material/tree';
     FormsModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     MatSelectModule,
-    MatTreeModule
+    MatTreeModule,
+    
 
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: CustomPaginator() },
-    Title
+    Title,
+    ChecklistDatabase
   ],
   bootstrap: [AppComponent],
   entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent]

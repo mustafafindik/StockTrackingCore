@@ -17,20 +17,13 @@ export class TodoItemFlatNode {
 }
 
 const TREE_DATA = {
-  Groceries: {
-    'Almond Meal flour': null,
-    'Organic eggs': null,
-    'Protein Powder': null,
-    Fruits: {
-      Apple: null,
-      Berries: ['Blueberry', 'Raspberry'],
-      Orange: null
-    }
-  },
-  Reminders: [
-    'Cook dinner',
-    'Read the Material Design spec',
-    'Upgrade Application to Angular'
+  "Alkolsüz İçecekler": [
+    'Gazlı İçecekler', 
+    'Meyve Suları'],
+  "Atıştırmalık Gıdalar": [
+    'Dondurmalar',
+    'Şekerlemeler',
+    'Sağlıklı Atıştırmalıklar'
   ]
 };
 
@@ -80,11 +73,6 @@ export class ChecklistDatabase {
     this.dataChange.next(this.data);
   }
 }
-
-/**
- * @title Tree with checkboxes
- */
-
 
 @Component({
   selector: 'app-categories',
@@ -231,7 +219,9 @@ export class CategoriesComponent  {
 
  /** Select the category so we can insert the new item. */
  addNewItem(node: TodoItemFlatNode) {
+   console.log(node)
    const parentNode = this.flatNodeMap.get(node);
+   console.log(parentNode)
    this._database.insertItem(parentNode!, '');
    this.treeControl.expand(node);
  }
