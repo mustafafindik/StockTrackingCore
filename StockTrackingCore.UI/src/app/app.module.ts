@@ -39,6 +39,7 @@ import { VatratesComponent } from './components/vatrates/vatrates.component';
 import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vatrate-dialog.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { MatTreeModule } from '@angular/material/tree';
+import { CategoriesDialogComponent } from './components/categories/categories-dialog/categories-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MatTreeModule } from '@angular/material/tree';
     VatratesComponent,
     VatrateDialogComponent,
     CategoriesComponent,
+    CategoriesDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,7 @@ import { MatTreeModule } from '@angular/material/tree';
     Title,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent]
+  entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent,CategoriesDialogComponent]
 })
 export class AppModule {
 

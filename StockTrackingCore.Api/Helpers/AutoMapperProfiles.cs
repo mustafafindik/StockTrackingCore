@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using StockTrackingCore.Api.Dtos;
 using StockTrackingCore.Entities.Concrete;
+using System.Collections.Generic;
 
 namespace StockTrackingCore.Api.Helpers
 {
@@ -30,6 +31,28 @@ namespace StockTrackingCore.Api.Helpers
             CreateMap<VatRate, VatRateListDto>();
             CreateMap<VatRate, VatRateDetailDto>();
 
+            //Categories
+            CreateMap<SubCategory, SubCategoryListDto>().ForMember(dest => dest.Id, opt =>
+            {
+                opt.MapFrom(src => src.Id);
+            }).ForMember(dest => dest.CategoryName, opt =>
+            {
+                opt.MapFrom(src => src.SubCategoryName);
+            }).ForMember(dest => dest.ParentCategoryId, opt =>
+            {
+                opt.MapFrom(src => src.CategoryId);
+            });
+
+
+
+
+            CreateMap<Category, CategoryListDto>().ForMember(dest => dest.Id, opt =>
+            {
+                opt.MapFrom(src => src.Id);
+            }).ForMember(dest => dest.CategoryName, opt =>
+            {
+                opt.MapFrom(src => src.CategoryName);
+            });
         }
     }
 }

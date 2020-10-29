@@ -14,7 +14,7 @@
         <div class="kt-portlet__head-wrapper">
           <div class="kt-portlet__head-actions">
             &nbsp;
-            <button mat-raised-button   matTooltip="Yeni Kategori Ekle"  color="accent"  class="mat-button-mt-4">
+            <button mat-raised-button (click)="openDialog('Kategori Ekle',{})"  matTooltip="Yeni Kategori Ekle"  color="accent"  class="mat-button-mt-4">
               <mat-icon>add</mat-icon>
               Yeni Kategori Ekle
             </button><!-- Call 'update-stated-dialog' from _shared folder -->
@@ -29,10 +29,10 @@
           <!-- use a disabled button to provide padding for tree leaf -->
           <button mat-icon-button disabled></button>
           <mat-icon style="margin-right: 10px;">remove</mat-icon>
-          {{node.name}}
+          <span style="font-size: 20px;">{{node.categoryName}}</span>
          
-          <button  style="float: right;" mat-icon-button color="primal" matTooltip="Bu Alt Kategoriyi Düzenle"  ><mat-icon>create</mat-icon></button>
-          <button mat-icon-button color="warn" matTooltip="Bu Alt Kategoriyi Sil"><mat-icon>delete_sweep </mat-icon></button>
+          <button (click)="openDialog('Alt Kategori Düzenle',node)" style="float: right;" mat-icon-button color="primal" matTooltip="Bu Alt Kategoriyi Düzenle"  ><mat-icon>create</mat-icon></button>
+          <button (click)="openDialog('Alt Kategori Sil',node)" mat-icon-button color="warn" matTooltip="Bu Alt Kategoriyi Sil"><mat-icon>delete_sweep </mat-icon></button>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
         <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
@@ -42,10 +42,10 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          {{node.name}}
-          <button mat-icon-button color="accent" matTooltip=" Bu Kategori altına , Yeni Alt Kategori Ekle" ><mat-icon>add_box</mat-icon></button>
-          <button mat-icon-button color="primal" matTooltip="Bu  Kategoriyi Düzenle"><mat-icon>create</mat-icon></button>
-          <button mat-icon-button color="warn" matTooltip="Bu  Kategoriyi Sil" ><mat-icon>delete_sweep </mat-icon></button>
+          <span style="font-size: 20px;">{{node.categoryName}}</span>
+          <button  (click)="openDialog('Alt Kategori Ekle',node)" mat-icon-button color="accent" matTooltip=" Bu Kategori altına , Yeni Alt Kategori Ekle" ><mat-icon>add_box</mat-icon></button>
+          <button  (click)="openDialog('Kategori Düzenle',node)" mat-icon-button color="primal" matTooltip="Bu  Kategoriyi Düzenle"><mat-icon>create</mat-icon></button>
+          <button (click)="openDialog('Kategori Sil',node)"  mat-icon-button color="warn" matTooltip="Bu  Kategoriyi Sil" ><mat-icon>delete_sweep </mat-icon></button>
         </mat-tree-node>
        
       </mat-tree>

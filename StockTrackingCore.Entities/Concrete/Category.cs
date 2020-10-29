@@ -6,6 +6,6 @@ namespace StockTrackingCore.Entities.Concrete
     public class Category : BaseEntity, IEntity
     {
         public string CategoryName { get; set; }
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
+        public virtual List<SubCategory> SubCategories { get; set; }
     }
 }
