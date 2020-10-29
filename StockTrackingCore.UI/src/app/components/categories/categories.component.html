@@ -35,18 +35,29 @@
           <button (click)="openDialog('Alt Kategori Sil',node)" mat-icon-button color="warn" matTooltip="Bu Alt Kategoriyi Sil"><mat-icon>delete_sweep </mat-icon></button>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
-        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild;" matTreeNodePadding>
           <button mat-icon-button matTreeNodeToggle
                   [attr.aria-label]="'Toggle ' + node.name">
             <mat-icon class="mat-icon-rtl-mirror">
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
+          
           <span style="font-size: 20px;">{{node.categoryName}}</span>
           <button  (click)="openDialog('Alt Kategori Ekle',node)" mat-icon-button color="accent" matTooltip=" Bu Kategori altına , Yeni Alt Kategori Ekle" ><mat-icon>add_box</mat-icon></button>
           <button  (click)="openDialog('Kategori Düzenle',node)" mat-icon-button color="primal" matTooltip="Bu  Kategoriyi Düzenle"><mat-icon>create</mat-icon></button>
           <button (click)="openDialog('Kategori Sil',node)"  mat-icon-button color="warn" matTooltip="Bu  Kategoriyi Sil" ><mat-icon>delete_sweep </mat-icon></button>
         </mat-tree-node>
+
+          <!-- This is the tree node template for expandable nodes -->
+          <mat-tree-node *matTreeNodeDef="let node;when hasEmptyMain" matTreeNodePadding>
+            <button mat-icon-button><mat-icon class="mat-icon-rtl-mirror">chevron_right</mat-icon></button>
+            
+            <span style="font-size: 20px;">{{node.categoryName}}</span>
+            <button  (click)="openDialog('Alt Kategori Ekle',node)" mat-icon-button color="accent" matTooltip=" Bu Kategori altına , Yeni Alt Kategori Ekle" ><mat-icon>add_box</mat-icon></button>
+            <button  (click)="openDialog('Kategori Düzenle',node)" mat-icon-button color="primal" matTooltip="Bu  Kategoriyi Düzenle"><mat-icon>create</mat-icon></button>
+            <button (click)="openDialog('Kategori Sil',node)"  mat-icon-button color="warn" matTooltip="Bu  Kategoriyi Sil" ><mat-icon>delete_sweep </mat-icon></button>
+          </mat-tree-node>
        
       </mat-tree>
 

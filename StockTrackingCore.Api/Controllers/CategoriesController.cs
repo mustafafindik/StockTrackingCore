@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingCore.Api.Dtos;
 using StockTrackingCore.Business.Abstract;
+using StockTrackingCore.Entities.Concrete;
 
 namespace StockTrackingCore.Api.Controllers
 {
@@ -43,6 +44,37 @@ namespace StockTrackingCore.Api.Controllers
                 }
 
             }
+
+        }
+
+
+
+        [HttpPost]
+        [Route("addCategory")]
+        public ActionResult Add([FromBody] Category category)
+        {
+            try
+            {
+                category.CreateDate = DateTime.Now;
+                category.CreatedBy = "AngularDefault";
+                category.ModifiedDate = DateTime.Now;
+                category.ModifiedBy = "AngularDefault";
+
+                _categoryService.Add(category);
+                return Ok(category);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    return NotFound(ex.InnerException.Message); //Bad Request
+                }
+                else
+                {
+                    return NotFound(ex.Message); //Bad Request
+                }
+            }
+
 
         }
     }
