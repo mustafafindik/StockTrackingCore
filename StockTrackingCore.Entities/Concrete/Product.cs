@@ -19,8 +19,11 @@ namespace StockTrackingCore.Entities.Concrete
         public int UnitId { get; set; } //FK
         public Unit Unit { get; set; }
 
-        public int VatRateId { get; set; } //Fk
-        public VatRate VatRate { get; set; }
+        public int SalesVatRateId { get; set; } //Fk
+        public VatRate SalesVatRate { get; set; }
+
+        public int PurchaseVatRateId { get; set; } //Fk
+        public VatRate PurchaseVatRate { get; set; }
 
 
         [Column(TypeName = "decimal(18, 2)")]

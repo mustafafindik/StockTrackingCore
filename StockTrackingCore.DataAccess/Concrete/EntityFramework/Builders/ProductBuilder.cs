@@ -15,9 +15,9 @@ namespace StockTrackingCore.DataAccess.Concrete.EntityFramework.Builders
             builder.Property(p => p.ProductCode).IsRequired().HasMaxLength(200);
             builder.HasOne(p => p.SubCategory).WithMany(c => c.Products).HasForeignKey(p => p.SubCategoryId);
             builder.HasOne(p => p.Unit).WithMany(c => c.Products).HasForeignKey(p => p.UnitId);
-            builder.HasOne(p => p.VatRate).WithMany(c => c.Products).HasForeignKey(p => p.VatRateId);
+            builder.HasOne(p => p.SalesVatRate).WithMany().HasForeignKey(p => p.SalesVatRateId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(p => p.Warehouse).WithMany(c => c.Products).HasForeignKey(p => p.WarehouseId);
-
+            builder.HasOne(p => p.PurchaseVatRate).WithMany().HasForeignKey(p => p.PurchaseVatRateId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 

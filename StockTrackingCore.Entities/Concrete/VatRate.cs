@@ -11,6 +11,7 @@ namespace StockTrackingCore.Entities.Concrete
         [Column(TypeName = "decimal(18, 2)")]
         public decimal VatRateValue { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+
+
     }
 }

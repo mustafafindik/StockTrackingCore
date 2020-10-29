@@ -30,11 +30,14 @@ namespace StockTrackingCore.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new BarcodeBuilder());
             modelBuilder.ApplyConfiguration(new CategoryBuilder());
             modelBuilder.ApplyConfiguration(new CityBuilder());
+            modelBuilder.ApplyConfiguration(new CustomerBuilder());
             modelBuilder.ApplyConfiguration(new ProductBuilder());
             modelBuilder.ApplyConfiguration(new StockBuilder());
             modelBuilder.ApplyConfiguration(new StockTypeBuilder());
             modelBuilder.ApplyConfiguration(new SubCategoryBuilder());
+            modelBuilder.ApplyConfiguration(new SupplierBuilder());
             modelBuilder.ApplyConfiguration(new UnitBuilder());
+            modelBuilder.ApplyConfiguration(new UserBuilder());
             modelBuilder.ApplyConfiguration(new VatRateBuilder());
             modelBuilder.ApplyConfiguration(new WarehouseBuilder());
 
