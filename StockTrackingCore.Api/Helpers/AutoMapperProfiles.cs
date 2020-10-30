@@ -38,7 +38,7 @@ namespace StockTrackingCore.Api.Helpers
             }).ForMember(dest => dest.CategoryName, opt =>
             {
                 opt.MapFrom(src => src.SubCategoryName);
-            }).ForMember(dest => dest.ParentCategoryId, opt =>
+            }).ForMember(dest => dest.ParentCategoryid, opt =>
             {
                 opt.MapFrom(src => src.CategoryId);
             });

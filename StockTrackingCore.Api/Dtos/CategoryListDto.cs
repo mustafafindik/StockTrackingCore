@@ -16,6 +16,6 @@ namespace StockTrackingCore.Api.Dtos
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
-        public int ParentCategoryId { get; set; }
+        public int ParentCategoryid { get; set; }
     }
 }
