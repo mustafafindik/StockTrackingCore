@@ -295,11 +295,14 @@ export class CategoriesComponent {
 
   // Bir Kategorinin Pozisyonu için
   findMainPosition(id: number, data: CategoryListModel[]) {
-    
+    console.log(data);
     for (let i = 0; i < data.length; i += 1) {
-      if (id === data[i].id) {
-        return i;
+      if(data[i] !== undefined){
+        if (id === data[i].id) {
+          return i;
+        }
       }
+     
     }
   }
 
@@ -308,11 +311,17 @@ export class CategoriesComponent {
     console.log(data);
     console.log(id);
     console.log(parentid);
-    console.log(data.find(d=>d.id==parentid).subCategories.length);
-    for (let i = 0; i < data.find(d=>d.id==parentid).subCategories.length; i += 1) {
-      if (id === data.find(d=>d.id==parentid).subCategories[i].id) {
-        return i;
+    var filtered = data.filter(function (el) {
+      return el != null;
+    });
+
+    for (let i = 0; i < filtered.find(d=>d.id==parentid).subCategories.length; i += 1) {
+      if( filtered.find(d=>d.id==parentid) !== undefined){
+        if (id === filtered.find(d=>d.id==parentid).subCategories[i].id) {
+          return i;
+        }
       }
+     
     }
   }
 
