@@ -1,12 +1,10 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingCore.Api.Dtos;
 using StockTrackingCore.Business.Abstract;
 using StockTrackingCore.Entities.Concrete;
+using System;
+using System.Collections.Generic;
 
 namespace StockTrackingCore.Api.Controllers
 {
@@ -170,7 +168,7 @@ namespace StockTrackingCore.Api.Controllers
 
         [HttpPost]
         [Route("deleteselected")]
-        public ActionResult DeleteSelected([FromBody]  List<int> ids)
+        public ActionResult DeleteSelected([FromBody] List<int> ids)
         {
             try
             {

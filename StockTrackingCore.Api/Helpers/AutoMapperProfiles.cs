@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using StockTrackingCore.Api.Dtos;
 using StockTrackingCore.Entities.Concrete;
-using System.Collections.Generic;
 
 namespace StockTrackingCore.Api.Helpers
 {

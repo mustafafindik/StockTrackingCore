@@ -5,7 +5,6 @@ using StockTrackingCore.Business.Abstract;
 using StockTrackingCore.Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace StockTrackingCore.Api.Controllers
 {
@@ -25,7 +24,7 @@ namespace StockTrackingCore.Api.Controllers
         {
             try
             {
-                var cities  = _cityService.GetAll();
+                var cities = _cityService.GetAll();
                 var citiesMap = _mapper.Map<List<CityListDto>>(cities);
                 return Ok(citiesMap);
             }
@@ -39,7 +38,7 @@ namespace StockTrackingCore.Api.Controllers
                 {
                     return NotFound(ex.Message); //Bad Request
                 }
-               
+
             }
 
         }
@@ -70,7 +69,7 @@ namespace StockTrackingCore.Api.Controllers
                 }
 
             }
-         
+
         }
 
 
@@ -99,7 +98,7 @@ namespace StockTrackingCore.Api.Controllers
                     return NotFound(ex.Message); //Bad Request
                 }
             }
-            
+
 
         }
 
@@ -148,7 +147,7 @@ namespace StockTrackingCore.Api.Controllers
                 {
                     return NotFound("Şehir Bulunamadı"); //Bad Request
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -168,14 +167,14 @@ namespace StockTrackingCore.Api.Controllers
 
         [HttpPost]
         [Route("deleteselected")]
-        public ActionResult DeleteSelected([FromBody]  List<int> ids)
+        public ActionResult DeleteSelected([FromBody] List<int> ids)
         {
             try
             {
-               
-                    _cityService.DeleteSelected(ids);
-                    return Ok();
-               
+
+                _cityService.DeleteSelected(ids);
+                return Ok();
+
 
             }
             catch (Exception ex)

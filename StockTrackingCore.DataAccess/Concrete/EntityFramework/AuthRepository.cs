@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StockTrackingCore.DataAccess.Abstract;
 using StockTrackingCore.DataAccess.Concrete.EntityFramework.Contexts;
 using StockTrackingCore.Entities.Concrete;
+using System.Threading.Tasks;
 
 namespace StockTrackingCore.DataAccess.Concrete.EntityFramework
 {

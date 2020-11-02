@@ -1,4 +1,3 @@
-using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +13,7 @@ using StockTrackingCore.DataAccess.Abstract;
 using StockTrackingCore.DataAccess.Concrete.EntityFramework;
 using StockTrackingCore.DataAccess.Concrete.EntityFramework.Contexts;
 using StockTrackingCore.DataAccess.Concrete.EntityFramework.Seeds;
+using System.Text;
 
 namespace StockTrackingCore.Api
 {
@@ -29,7 +29,7 @@ namespace StockTrackingCore.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-       
+
             string Origins = Configuration["Appsettings:Origins"];
             services.AddCors(options =>
             {
@@ -75,13 +75,19 @@ namespace StockTrackingCore.Api
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
             services.AddTransient<IWarehouseService, WarehouseService>();
 
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddTransient<ISupplierService, SupplierService>();
+
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<ICustomerService, CustomerService>();
+
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddTransient<IAuthService, AuthService>();
 
             services.AddTransient<ApplicationDbContext>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("StockTrackingCore.Api")));
 
-            
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -115,9 +121,9 @@ namespace StockTrackingCore.Api
                 endpoints.MapControllers();
             });
 
- 
+
             app.UseAuthentication();
-            
+
 
 
             ApplicationDbContextSeed.Seed(app); //Test Data.

@@ -1,5 +1,4 @@
 ﻿using StockTrackingCore.Entities.Abstract;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockTrackingCore.Entities.Concrete

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StockTrackingCore.Entities.Concrete;
 using System.Threading.Tasks;
-using StockTrackingCore.Entities.Concrete;
 
 namespace StockTrackingCore.DataAccess.Abstract
 {

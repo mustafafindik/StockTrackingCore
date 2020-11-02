@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StockTrackingCore.Entities.Abstract;
 
 namespace StockTrackingCore.Entities.Concrete
 {
-    public class Supplier :BaseEntity
+    public class Supplier : BaseEntity, IEntity
     {
         public string SupplierName { get; set; }
         public string TaxId { get; set; }

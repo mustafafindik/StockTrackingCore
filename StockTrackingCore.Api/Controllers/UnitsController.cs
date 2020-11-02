@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingCore.Api.Dtos;
 using StockTrackingCore.Business.Abstract;
 using StockTrackingCore.Entities.Concrete;
+using System;
+using System.Collections.Generic;
 
 namespace StockTrackingCore.Api.Controllers
 {
@@ -29,7 +27,7 @@ namespace StockTrackingCore.Api.Controllers
             try
             {
                 var units = _unitService.GetAll();
-                var unitLists  = _mapper.Map<List<UnitListDto>>(units);
+                var unitLists = _mapper.Map<List<UnitListDto>>(units);
                 return Ok(unitLists);
             }
             catch (Exception ex)
