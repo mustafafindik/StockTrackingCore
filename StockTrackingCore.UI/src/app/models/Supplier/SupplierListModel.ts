@@ -3,8 +3,6 @@ export class SupplierListModel {
     supplierName:string;
     taxId:string;
     taxOffice:string;
-    address:string;
-    phoneNumber:string;
-    email:string;
+ 
 
 }

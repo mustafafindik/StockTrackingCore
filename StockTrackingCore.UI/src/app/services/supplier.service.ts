@@ -13,11 +13,11 @@ export class SupplierService {
 
   constructor(private httpClient: HttpClient) { }
   path = Settings.ApiBaseUrl;
-  getCities(): Observable<SupplierListModel[]> {
+  getSuppliers(): Observable<SupplierListModel[]> {
     return this.httpClient.get<SupplierListModel[]>(this.path + "suppliers/getsuppliers");
   }
 
-  getCityById(supplierId: number): Observable<SupplierDetailModel> {
+  getSupplierById(supplierId: number): Observable<SupplierDetailModel> {
     return this.httpClient.get<SupplierDetailModel>(this.path + "suppliers/detail/" + supplierId);
   }
 

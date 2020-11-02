@@ -42,6 +42,8 @@ import { MatTreeModule } from '@angular/material/tree';
 import { CategoriesDialogComponent } from './components/categories/categories-dialog/categories-dialog.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { SupplierDialogComponent } from './components/suppliers/supplier-dialog/supplier-dialog.component';
+import { CustomerDialogComponent } from './components/customers/customer-dialog/customer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { CustomersComponent } from './components/customers/customers.component';
     CategoriesComponent,
     CategoriesDialogComponent,
     SuppliersComponent,
+    SupplierDialogComponent,
     CustomersComponent,
+    CustomerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +102,16 @@ import { CustomersComponent } from './components/customers/customers.component';
     Title,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MyDialogComponent, CitiesDialogComponent, WarehouseDialogComponent, UnitsDialogComponent, VatrateDialogComponent,CategoriesDialogComponent]
+  entryComponents: [
+    MyDialogComponent, 
+    CitiesDialogComponent, 
+    WarehouseDialogComponent, 
+    UnitsDialogComponent, 
+    VatrateDialogComponent,
+    CategoriesDialogComponent,
+    SupplierDialogComponent,
+    CustomerDialogComponent
+  ]
 })
 export class AppModule {
 
