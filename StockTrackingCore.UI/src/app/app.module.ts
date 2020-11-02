@@ -40,6 +40,8 @@ import { VatrateDialogComponent } from './components/vatrates/vatrate-dialog/vat
 import { CategoriesComponent } from './components/categories/categories.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { CategoriesDialogComponent } from './components/categories/categories-dialog/categories-dialog.component';
+import { SuppliersComponent } from './components/suppliers/suppliers.component';
+import { CustomersComponent } from './components/customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { CategoriesDialogComponent } from './components/categories/categories-di
     VatratesComponent,
     VatrateDialogComponent,
     CategoriesComponent,
-    CategoriesDialogComponent
+    CategoriesDialogComponent,
+    SuppliersComponent,
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
