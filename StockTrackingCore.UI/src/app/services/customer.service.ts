@@ -14,11 +14,11 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
   path = Settings.ApiBaseUrl;
-  getCities(): Observable<CustomerListModel[]> {
+  getCustomers(): Observable<CustomerListModel[]> {
     return this.httpClient.get<CustomerListModel[]>(this.path + "customers/getcustomers");
   }
 
-  getCityById(customerId: number): Observable<CustomerDetailModel> {
+  getCustomerById(customerId: number): Observable<CustomerDetailModel> {
     return this.httpClient.get<CustomerDetailModel>(this.path + "customers/detail/" + customerId);
   }
 

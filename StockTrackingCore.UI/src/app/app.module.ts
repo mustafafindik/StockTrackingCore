@@ -18,7 +18,6 @@ import { MatProgressSpinnerModule, } from "@angular/material/progress-spinner";
 import { MatPaginatorIntl, MatPaginatorModule } from "@angular/material/paginator";
 import { MatInputModule, } from "@angular/material/input";
 import { CustomPaginator } from './helpers/CustomPaginatorConfiguration';
-import { ProductComponent } from './components/product/product.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,6 +43,7 @@ import { SuppliersComponent } from './components/suppliers/suppliers.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { SupplierDialogComponent } from './components/suppliers/supplier-dialog/supplier-dialog.component';
 import { CustomerDialogComponent } from './components/customers/customer-dialog/customer-dialog.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { CustomerDialogComponent } from './components/customers/customer-dialog/
     FooterComponent,
     SidebarComponent,
     HeaderComponent,
-    ProductComponent,
+    ProductsComponent,
     MyDialogComponent,
     CitiesDialogComponent,
     WarehousesComponent,
