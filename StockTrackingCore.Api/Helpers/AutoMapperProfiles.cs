@@ -41,10 +41,6 @@ namespace StockTrackingCore.Api.Helpers
             {
                 opt.MapFrom(src => src.CategoryId);
             });
-
-
-
-
             CreateMap<Category, CategoryListDto>().ForMember(dest => dest.Id, opt =>
             {
                 opt.MapFrom(src => src.Id);
@@ -52,6 +48,15 @@ namespace StockTrackingCore.Api.Helpers
             {
                 opt.MapFrom(src => src.CategoryName);
             });
+
+            //Supplier
+            CreateMap<Supplier, SupplierListDto>();
+            CreateMap<Supplier, SupplierDetailDto>();
+
+            //Customer
+            CreateMap<Customer, CustomerListDto>();
+            CreateMap<Customer, CustomerDetailDto>();
+
         }
     }
 }
